@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113777015-4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-113777015-4');
   </script>
 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/face-api.js"></script>
   <script src="js/commons.js"></script>
   <script src="js/FileSaver.js"></script>
   <script src="js/dom-to-image.min.js"></script>
   <script src="js/faceDetectionControls.js"></script>
   <script src="js/imageSelectionControls.js"></script>
+
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
+
 <body>
   <div id="navbar"></div>
   <div class="left-content page-container">
@@ -36,250 +42,213 @@
       </div>
       <!-- <canvas id="overlay" /> This used to be under inputImg-->
 
-    <!-- Mask selection goes here -->
-    <img src="images/wearafuckingmask-social-no-earloops-black-border.png" id="mask"
-    onclick="changemask('images/wearafuckingmask-social-no-earloops-black-border.png');" style="width:10%;">
-    <!-- <img src="images/wearafuckingmask-social-no-earloops-no-border.png" id="mask"
+      <!-- Mask selection goes here -->
+      <img src="images/wearafuckingmask-social-no-earloops-black-border.png" id="mask"
+        onclick="changemask('images/wearafuckingmask-social-no-earloops-black-border.png');" style="width:10%;">
+      <!-- <img src="images/wearafuckingmask-social-no-earloops-no-border.png" id="mask"
     onclick="changemask('images/wearafuckingmask-social-no-earloops-no-border.png');" style="width:10%;"> -->
-    <!-- <img src="images/wearafuckingmask-social-no-earloops-white-border.png" id="mask"
+      <!-- <img src="images/wearafuckingmask-social-no-earloops-white-border.png" id="mask"
     onclick="changemask('images/wearafuckingmask-social-no-earloops-white-border.png');" style="width:10%;"> -->
-    <img src="images/afuckingmask-no-earloops-white.png" id="mask"
-    onclick="changemask('images/afuckingmask-no-earloops-white.png');" style="width:10%;">
-    <img src="images/afuckingmask-no-earloops-black.png" id="mask"
-    onclick="changemask('images/afuckingmask-no-earloops-black.png');;" style="width:10%;">
-    <img src="images/DIYmc-bandana.png" id="mask"
-    onclick="changemask('images/DIYmc-bandana.png');;" style="width:10%;">
-    <img src="images/bearmask.png" id="mask"
-    onclick="changemask('images/bearmask.png');;" style="width:10%;">
-    <img src="images/blackmask.png" id="mask"
-    onclick="changemask('images/blackmask.png');;" style="width:10%;">
-    <img src="images/skullmask.png" id="mask"
-    onclick="changemask('images/skullmask.png');;" style="width:10%;">
-    <img src="images/pinkmask.png" id="mask"
-    onclick="changemask('images/pinkmask.png');;" style="width:10%;">
-    <img src="images/pinkmask_txt.png" id="mask"
-    onclick="changemask('images/pinkmask_txt.png');;" style="width:10%;">
-    <!-- Mask selection goes here -->
-    <div class="row">
-      <button
-        class="waves-effect waves-light btn"
-        onclick="zoomin_mask();"
-      >Zoom In</button>
-      <button
-        class="waves-effect waves-light btn"
-        onclick="zoomout_mask();"
-      >Zoom Out</button>
-      <button
-        class="waves-effect waves-light btn"
-        onclick="moveleft_mask();"
-      >&larr;</button>
-      <button
-        class="waves-effect waves-light btn"
-        onclick="moveright_mask();"
-      >&rarr;</button>
-      <button
-        class="waves-effect waves-light btn"
-        onclick="moveup_mask();"
-      >&uarr;</button>
-      <button
-        class="waves-effect waves-light btn"
-        onclick="movedown_mask();"
-      >&darr;</button>
-    </div>
-    <div class="left-content">
-      Paste a link to your photo or upload your image to put a #maskon.
-      Choose from different masks.
-      <p>
-      <!-- image_selection_control -->
-      <div class="row side-by-side" style="margin-left:0;">
-        <label for="imgUrlInput">Get image from URL:</label>
-        <input id="imgUrlInput" type="text" class="bold">
-      <button
-        class="waves-effect waves-light btn"
-        onclick="loadImageFromUrl(); clearmask();"
-      >Ok</button>
-      <div id="selectList" style='visibility: hidden;'></div>
-    </div>
-      <p>
-      <input id="queryImgUploadInput" type="file" class="waves-effect btn bold" onchange="loadImageFromUpload(); clearmask();" accept=".jpg, .jpeg, .png">
-      <!-- image_selection_control -->
-    </div>
-    <p>
-    <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo" onclick="downloadmaskpic();"/>
-
-    <div class="row side-by-side" style="visibility: hidden;">
-      <!-- face_detector_selection_control -->
-      <div id="face_detector_selection_control" class="row input-field" style="margin-right: 20px;">
-        <select id="selectFaceDetector">
-          <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
-          <option value="tiny_face_detector">Tiny Face Detector</option>
-        </select>
-        <label>Select Face Detector</label>
+      <img src="images/afuckingmask-no-earloops-white.png" id="mask" onclick="changemask('images/afuckingmask-no-earloops-white.png');"
+        style="width:10%;">
+      <img src="images/afuckingmask-no-earloops-black.png" id="mask" onclick="changemask('images/afuckingmask-no-earloops-black.png');;"
+        style="width:10%;">
+      <img src="images/DIYmc-bandana.png" id="mask" onclick="changemask('images/DIYmc-bandana.png');;" style="width:10%;">
+      <img src="images/bearmask.png" id="mask" onclick="changemask('images/bearmask.png');;" style="width:10%;">
+      <img src="images/blackmask.png" id="mask" onclick="changemask('images/blackmask.png');;" style="width:10%;">
+      <img src="images/skullmask.png" id="mask" onclick="changemask('images/skullmask.png');;" style="width:10%;">
+      <img src="images/pinkmask.png" id="mask" onclick="changemask('images/pinkmask.png');;" style="width:10%;">
+      <img src="images/pinkmask_txt.png" id="mask" onclick="changemask('images/pinkmask_txt.png');;" style="width:10%;">
+      <!-- Mask selection goes here -->
+      <div class="row">
+        <button class="waves-effect waves-light btn" onclick="zoomin_mask();">Zoom In</button>
+        <button class="waves-effect waves-light btn" onclick="zoomout_mask();">Zoom Out</button>
+        <button class="waves-effect waves-light btn" onclick="moveleft_mask();">&larr;</button>
+        <button class="waves-effect waves-light btn" onclick="moveright_mask();">&rarr;</button>
+        <button class="waves-effect waves-light btn" onclick="moveup_mask();">&uarr;</button>
+        <button class="waves-effect waves-light btn" onclick="movedown_mask();">&darr;</button>
       </div>
-      <!-- face_detector_selection_control -->
-
-      <!-- check boxes -->
-      <div class="row" style="width: 220px;">
-        <input type="checkbox" id="hideBoundingBoxesCheckbox" onchange="onChangeHideBoundingBoxes(event)" />
-        <label for="hideBoundingBoxesCheckbox">Hide Bounding Boxes</label>
-      </div>
-      <!-- check boxes -->
-    </div>
-
-
-    <!-- ssd_mobilenetv1_controls -->
-    <span id="ssd_mobilenetv1_controls" style="visibility: hidden;">
-      <div class="row side-by-side">
-        <div class="row">
-          <label for="minConfidence">Min Confidence:</label>
-          <input disabled value="0.5" id="minConfidence" type="text" class="bold">
+      <div class="left-content">
+        Paste a link to your photo or upload your image to put a #maskon.
+        Choose from different masks.
+        <p>
+          <!-- image_selection_control -->
+        <div class="row side-by-side" style="margin-left:0;">
+          <label for="imgUrlInput">Get image from URL:</label>
+          <input id="imgUrlInput" type="text" class="bold">
+          <button class="waves-effect waves-light btn" onclick="loadImageFromUrl(); clearmask();">Ok</button>
+          <div id="selectList" style='visibility: hidden;'></div>
         </div>
-        <button
-          class="waves-effect waves-light btn"
-          onclick="onDecreaseMinConfidence(); clearmask();"
-        >
-          <i class="material-icons left">-</i>
-        </button>
-        <button
-          class="waves-effect waves-light btn"
-          onclick="onIncreaseMinConfidence(); clearmask();"
-        >
-          <i class="material-icons left">+</i>
-        </button>
+        <p>
+          <input id="queryImgUploadInput" type="file" class="waves-effect btn bold" onchange="loadImageFromUpload(); clearmask();"
+            accept=".jpg, .jpeg, .png">
+          <!-- image_selection_control -->
       </div>
-    </span>
-    <!-- ssd_mobilenetv1_controls -->
+      <p>
+        <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo" onclick="downloadmaskpic();" />
 
-    <!-- tiny_face_detector_controls -->
-    <span id="tiny_face_detector_controls">
-      <div class="row side-by-side">
-        <div class="row input-field" style="margin-right: 20px;">
-          <select id="inputSize">
-            <option value="" disabled selected>Input Size:</option>
-            <option value="160">160 x 160</option>
-            <option value="224">224 x 224</option>
-            <option value="320">320 x 320</option>
-            <option value="416">416 x 416</option>
-            <option value="512">512 x 512</option>
-            <option value="608">608 x 608</option>
+      <div class="row side-by-side" style="visibility: hidden;">
+        <!-- face_detector_selection_control -->
+        <div id="face_detector_selection_control" class="row input-field" style="margin-right: 20px;">
+          <select id="selectFaceDetector">
+            <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
+            <option value="tiny_face_detector">Tiny Face Detector</option>
           </select>
-          <label>Input Size</label>
+          <label>Select Face Detector</label>
         </div>
-        <div class="row">
-          <label for="scoreThreshold">Score Threshold:</label>
-          <input disabled value="0.5" id="scoreThreshold" type="text" class="bold">
+        <!-- face_detector_selection_control -->
+
+        <!-- check boxes -->
+        <div class="row" style="width: 220px;">
+          <input type="checkbox" id="hideBoundingBoxesCheckbox" onchange="onChangeHideBoundingBoxes(event)" />
+          <label for="hideBoundingBoxesCheckbox">Hide Bounding Boxes</label>
         </div>
-        <button
-          class="waves-effect waves-light btn"
-          onclick="onDecreaseScoreThreshold()"
-        >
-          <i class="material-icons left">-</i>
-        </button>
-        <button
-          class="waves-effect waves-light btn"
-          onclick="onIncreaseScoreThreshold()"
-        >
-          <i class="material-icons left">+</i>
-        </button>
+        <!-- check boxes -->
       </div>
-    </span>
-    <!-- tiny_face_detector_controls -->
 
-    <div id="img-out"></div>
-    <div class="left-content">
-      <h3>References and other resources</h3>
-      <ul style="list-style-type:disc;">
-        <li><a href="http://github.com/jcheong0428/maskon/">MaskOnMe Github (contributions welcome!): http://github.com/jcheong0428/maskon/</a></li>
-        <li><a href="https://wearafuckingmask.com/">#WearAF—ingMask: https://wearafuckingmask.com/</a></li>
-        <li><a href="https://github.com/justadudewhohacks/face-api.js">face-api.js: https://github.com/justadudewhohacks/face-api.js/</a></li>
-        <li><a href="https://github.com/jlengstorf/spooky-masks-facial-recognition">spooky masks: https://github.com/jlengstorf/spooky-masks-facial-recognition</a></li>
-        <li><a href="https://diymaskchallenge.org">#DIYmaskchallenge: https://diymaskchallenge.org/</a></li>
-      </ul>
-    </div>
-  </body>
 
-  <script>
-    let withBoxes = true
+      <!-- ssd_mobilenetv1_controls -->
+      <span id="ssd_mobilenetv1_controls" style="visibility: hidden;">
+        <div class="row side-by-side">
+          <div class="row">
+            <label for="minConfidence">Min Confidence:</label>
+            <input disabled value="0.5" id="minConfidence" type="text" class="bold">
+          </div>
+          <button class="waves-effect waves-light btn" onclick="onDecreaseMinConfidence(); clearmask();">
+            <i class="material-icons left">-</i>
+          </button>
+          <button class="waves-effect waves-light btn" onclick="onIncreaseMinConfidence(); clearmask();">
+            <i class="material-icons left">+</i>
+          </button>
+        </div>
+      </span>
+      <!-- ssd_mobilenetv1_controls -->
 
-    function onChangeHideBoundingBoxes(e) {
-      withBoxes = !$(e.target).prop('checked')
-      updateResults()
+      <!-- tiny_face_detector_controls -->
+      <span id="tiny_face_detector_controls">
+        <div class="row side-by-side">
+          <div class="row input-field" style="margin-right: 20px;">
+            <select id="inputSize">
+              <option value="" disabled selected>Input Size:</option>
+              <option value="160">160 x 160</option>
+              <option value="224">224 x 224</option>
+              <option value="320">320 x 320</option>
+              <option value="416">416 x 416</option>
+              <option value="512">512 x 512</option>
+              <option value="608">608 x 608</option>
+            </select>
+            <label>Input Size</label>
+          </div>
+          <div class="row">
+            <label for="scoreThreshold">Score Threshold:</label>
+            <input disabled value="0.5" id="scoreThreshold" type="text" class="bold">
+          </div>
+          <button class="waves-effect waves-light btn" onclick="onDecreaseScoreThreshold()">
+            <i class="material-icons left">-</i>
+          </button>
+          <button class="waves-effect waves-light btn" onclick="onIncreaseScoreThreshold()">
+            <i class="material-icons left">+</i>
+          </button>
+        </div>
+      </span>
+      <!-- tiny_face_detector_controls -->
+
+      <div id="img-out"></div>
+      <div class="left-content">
+        <h3>References and other resources</h3>
+        <ul style="list-style-type:disc;">
+          <li><a href="http://github.com/jcheong0428/maskon/">MaskOnMe Github (contributions welcome!): http://github.com/jcheong0428/maskon/</a></li>
+          <li><a href="https://wearafuckingmask.com/">#WearAF—ingMask: https://wearafuckingmask.com/</a></li>
+          <li><a href="https://github.com/justadudewhohacks/face-api.js">face-api.js: https://github.com/justadudewhohacks/face-api.js/</a></li>
+          <li><a href="https://github.com/jlengstorf/spooky-masks-facial-recognition">spooky masks:
+              https://github.com/jlengstorf/spooky-masks-facial-recognition</a></li>
+          <li><a href="https://diymaskchallenge.org">#DIYmaskchallenge: https://diymaskchallenge.org/</a></li>
+        </ul>
+      </div>
+</body>
+
+<script>
+  let withBoxes = true
+
+  function onChangeHideBoundingBoxes(e) {
+    withBoxes = !$(e.target).prop('checked')
+    updateResults()
+  }
+
+  async function updateResults() {
+    if (!isFaceDetectionModelLoaded()) {
+      return
     }
 
-    async function updateResults() {
-      if (!isFaceDetectionModelLoaded()) {
-        return
-      }
+    const inputImgEl = $('#inputImg').get(0)
+    const scale = inputImgEl.width / inputImgEl.naturalWidth
+    const options = getFaceDetectorOptions()
 
-      const inputImgEl = $('#inputImg').get(0)
-      const scale = inputImgEl.width / inputImgEl.naturalWidth
-      const options = getFaceDetectorOptions()
-
-      // Attempt to add handleImage
-      const handleImage = (oldImage, newImage) => async () => {
-        const results = await faceapi.detectAllFaces(newImage, options).withFaceLandmarks()
-        // const detection = await faceapi
-        //   .detectSingleFace(inputImgEl, new faceapi.TinyFaceDetectorOptions())
-        //   .withFaceLandmarks(true)
-        // console.log(results)
-        for (let i in results) {
-          const overlayValues = getOverlayValues(results[i])
-          // console.log(overlayValues)
-          // load mask
-          const maskoverlay = document.createElement("img")
-          maskoverlay.src = document.getElementById("mask").src
-          maskoverlay.id = "maskon"
-          maskoverlay.class = "maskon"
-          maskoverlay.width = `${overlayValues.width * scale}`
-          maskoverlay.style.cssText = `
+    // Attempt to add handleImage
+    const handleImage = (oldImage, newImage) => async () => {
+      const results = await faceapi.detectAllFaces(newImage, options).withFaceLandmarks()
+      // const detection = await faceapi
+      //   .detectSingleFace(inputImgEl, new faceapi.TinyFaceDetectorOptions())
+      //   .withFaceLandmarks(true)
+      // console.log(results)
+      for (let i in results) {
+        const overlayValues = getOverlayValues(results[i])
+        // console.log(overlayValues)
+        // load mask
+        const maskoverlay = document.createElement("img")
+        maskoverlay.src = document.getElementById("mask").src
+        maskoverlay.id = "maskon"
+        maskoverlay.class = "maskon"
+        maskoverlay.width = `${overlayValues.width * scale}`
+        maskoverlay.style.cssText = `
             position: absolute;
             left: ${overlayValues.leftOffset * scale}px;
             top: ${overlayValues.topOffset * scale}px;
             transform: rotate(${overlayValues.angle}deg);
           `
-          // if (document.getElementById("maskon")) {
-          //   document.getElementById("maskon").remove()
-          // }
-          var item = document.getElementById("maskdiv");
-          item.appendChild(maskoverlay)
-        }
+        // if (document.getElementById("maskon")) {
+        //   document.getElementById("maskon").remove()
+        // }
+        var item = document.getElementById("maskdiv");
+        item.appendChild(maskoverlay)
       }
-
-      const image = new Image();
-      image.crossOrigin = "Anonymous";
-      image.addEventListener("load", handleImage(inputImgEl, image));
-      image.src = inputImgEl.src;
-
-      // const canvas = $('#widget').get(0)
-      // faceapi.matchDimensions(canvas, inputImgEl)
-      // const resizedResults = faceapi.resizeResults(results, inputImgEl)
-      //
-      // if (withBoxes) {
-      //   faceapi.draw.drawDetections(canvas, resizedResults)
-      // }
-      // faceapi.draw.drawFaceLandmarks(canvas, resizedResults)
     }
 
-    async function run() {
-      // load face detection and face landmark models
-      await changeFaceDetector(SSD_MOBILENETV1)
-      await faceapi.loadFaceLandmarkModel('/')
-      await faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
+    const image = new Image();
+    image.crossOrigin = "Anonymous";
+    image.addEventListener("load", handleImage(inputImgEl, image));
+    image.src = inputImgEl.src;
+
+    // const canvas = $('#widget').get(0)
+    // faceapi.matchDimensions(canvas, inputImgEl)
+    // const resizedResults = faceapi.resizeResults(results, inputImgEl)
+    //
+    // if (withBoxes) {
+    //   faceapi.draw.drawDetections(canvas, resizedResults)
+    // }
+    // faceapi.draw.drawFaceLandmarks(canvas, resizedResults)
+  }
+
+  async function run() {
+    // load face detection and face landmark models
+    await changeFaceDetector(SSD_MOBILENETV1)
+    await faceapi.loadFaceLandmarkModel('/')
+    await faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
       await faceapi.nets.faceLandmark68TinyNet.loadFromUri("/models"),
 
       // start processing image
       updateResults()
-    }
+  }
 
-    $(document).ready(function() {
-      renderNavBar('#navbar', 'mask_on_profile')
-      initImageSelectionControls()
-      initFaceDetectionControls()
-      run()
-    })
-  </script>
+  $(document).ready(function () {
+    renderNavBar('#navbar', 'mask_on_profile')
+    initImageSelectionControls()
+    initFaceDetectionControls()
+    run()
+  })
+</script>
 
-  <script>
+<script>
   const getOverlayValues = result => {
     landmarks = result.landmarks
     boundingbox = result.alignedRect._box
@@ -303,8 +272,8 @@
     return {
       width,
       angle,
-      leftOffset: nose[6].x - width/2 ,//jawLeft.x - jawLength*.09,
-      topOffset: nose[0].y - width*.13,
+      leftOffset: nose[6].x - width / 2,//jawLeft.x - jawLength*.09,
+      topOffset: nose[0].y - width * .13,
     }
   }
   function clearmask() {
@@ -333,12 +302,12 @@
 
   function downloadmaskpic() {
     domtoimage.toJpeg(document.getElementById('widget'), { quality: 1.00 })
-        .then(function (dataUrl) {
-            var link = document.createElement('a');
-            link.download = 'mask-on-profile.jpeg';
-            link.href = dataUrl;
-            link.click();
-        });
+      .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'mask-on-profile.jpeg';
+        link.href = dataUrl;
+        link.click();
+      });
   };
 
   function zoomin_mask() {
@@ -346,7 +315,7 @@
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
       // Do stuff
-      tableChild.width = tableChild.width*1.05;
+      tableChild.width = tableChild.width * 1.05;
     };
   }
 
@@ -355,7 +324,7 @@
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
       // Do stuff
-      tableChild.width = tableChild.width*0.95;
+      tableChild.width = tableChild.width * 0.95;
     };
   }
 
@@ -364,7 +333,7 @@
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
       // Do stuff
-      var left = parseFloat(tableChild.style.left)-2;
+      var left = parseFloat(tableChild.style.left) - 2;
       tableChild.style.left = `${left}px`;
     };
   }
@@ -374,7 +343,7 @@
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
       // Do stuff
-      var left = parseFloat(tableChild.style.left)+2;
+      var left = parseFloat(tableChild.style.left) + 2;
       tableChild.style.left = `${left}px`;
     };
   }
@@ -384,7 +353,7 @@
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
       // Do stuff
-      var top = parseFloat(tableChild.style.top)-2;
+      var top = parseFloat(tableChild.style.top) - 2;
       tableChild.style.top = `${top}px`;
     };
   }
@@ -394,11 +363,12 @@
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
       // Do stuff
-      var top = parseFloat(tableChild.style.top)+2;
+      var top = parseFloat(tableChild.style.top) + 2;
       tableChild.style.top = `${top}px`;
     };
   }
-  </script>
+</script>
 
 </body>
+
 </html>

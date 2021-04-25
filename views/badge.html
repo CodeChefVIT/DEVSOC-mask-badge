@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113777015-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-113777015-4');
+	</script>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script src="js/face-api.js"></script>
+	<script src="js/commons.js"></script>
+	<script src="js/FileSaver.js"></script>
+	<script src="js/dom-to-image.min.js"></script>
+	<script src="js/faceDetectionControls.js"></script>
+	<script src="js/imageSelectionControls.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+
+<body>
+	<div id="navbar"></div>
+	<div class="left-content page-container">
+
+		<p>Image to use:</p>
+
+		<input type="file" accept="image/*" id="img-input" />
+
+		<p>Canvas:</p>
+
+		<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3; border-radius: 16px">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+
+		<script>
+			$(document).ready(function () {
+				renderNavBar('#navbar', 'badge')
+				initImageSelectionControls()
+				initFaceDetectionControls()
+				run()
+			})
+
+			window.onload = function () {
+				const uri = "https://user-images.githubusercontent.com/24913006/116006242-f0463380-a627-11eb-9e46-6b7f77db9945.png";
+
+				const imgNode = new Image();
+
+				imgNode.onload = function () {
+					var canvas = document.getElementById("myCanvas");
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(imgNode, -2, 0, 402, 400);
+				}
+
+				imgNode.src = uri;
+			}
+
+			document.getElementById("img-input").onchange = function (obj) {
+				const imgPrev = document.getElementById("preview-img");
+				const uri = URL.createObjectURL(obj.target.files[0]);
+
+
+				const imgNode = new Image();
+
+				imgNode.onload = function () {
+					var canvas = document.getElementById("myCanvas");
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(imgNode, 0, 0, 400, 400);
+				}
+
+				imgNode.src = uri;
+
+			};
+		</script>
+
+
+
+</body>
+
+</html>
