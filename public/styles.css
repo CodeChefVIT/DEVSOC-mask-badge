@@ -1,15 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+body {
+  background-color: #080020;
+  color: white;
+  font-family: "Montserrat", sans-serif !important;
+}
+
 .page-container {
   left: 0;
   right: 0;
   margin: auto;
   margin-top: 20px;
-  padding-left: 280px;
+  padding-left: calc(280px + 5%);
   display: inline-flex !important;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .page-container {
-    padding-left: 0;
+    padding-left: 5%;
     display: flex !important;
   }
 }
@@ -41,7 +48,8 @@
   justify-content: center;
   align-items: center;
 }
-.side-by-side >* {
+
+.side-by-side>* {
   margin: 0 5px;
 }
 
@@ -84,13 +92,55 @@
 }
 
 input[type="file"]::-webkit-file-upload-button {
-    background: #26a69a;
-    border: 1px solid gray;
-    cursor: pointer;
-    color: #fff;
-    border-radius: .2em;
+  background: #26a69a;
+  border: 1px solid gray;
+  cursor: pointer;
+  color: #fff;
+  border-radius: .2em;
 }
 
 li:not(:last-child) {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+#myCanvas {
+  max-width: 400px !important;
+  border: none !important;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 500px) {
+  #myCanvas {
+    max-width: 300px !important;
+  }
+}
+
+h3 {
+  background: linear-gradient( 91.52deg, #3051ff .45%, #25d8ff 107.04%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 8% !important;
+}
+
+.side-nav {
+  background-color: #140052 !important;
+}
+
+.side-nav li>a {
+  color: white !important;
+}
+
+button {
+  background: linear-gradient( 91.89deg, #6f57ff -5.11%, #25d8ff 152.73%) !important;
+}
+
+.btn {
+  background: linear-gradient( 91.89deg, #6f57ff -5.11%, #25d8ff 152.73%) !important;
+}
+
+::file-selector-button {
+  background: white !important;
+  color: black !important;
+  font-family: "Montserrat", sans-serif !important;
 }

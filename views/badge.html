@@ -15,6 +15,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<script src="js/face-api.js"></script>
 	<script src="js/commons.js"></script>
@@ -42,6 +43,9 @@
 			Your browser does not support the HTML5 canvas tag.
 		</canvas>
 
+
+		<input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your DEVSOC badge!" onclick="downloadBadge();"
+			style="margin-bottom: 30px;" />
 		<script>
 			$(document).ready(function () {
 				renderNavBar('#navbar', 'badge')
@@ -50,34 +54,63 @@
 				run()
 			})
 
+			function downloadBadge() {
+
+				var link = document.createElement('a');
+				link.download = 'badge.png';
+				link.href = document.getElementById('myCanvas').toDataURL("image/png");
+				link.click();
+
+			}
+
 			window.onload = function () {
 				const uri = "https://user-images.githubusercontent.com/24913006/116006242-f0463380-a627-11eb-9e46-6b7f77db9945.png";
 
-				const imgNode = new Image();
+				const frame = new Image();
 
-				imgNode.onload = function () {
+
+				frame.onload = function () {
 					var canvas = document.getElementById("myCanvas");
 					var ctx = canvas.getContext("2d");
-					ctx.drawImage(imgNode, -2, 0, 402, 400);
+					ctx.drawImage(frame, -2, 0, 402, 400);
 				}
 
-				imgNode.src = uri;
+				frame.src = uri;
 			}
 
 			document.getElementById("img-input").onchange = function (obj) {
 				const imgPrev = document.getElementById("preview-img");
 				const uri = URL.createObjectURL(obj.target.files[0]);
 
+				const frameUri = "https://user-images.githubusercontent.com/24913006/116006242-f0463380-a627-11eb-9e46-6b7f77db9945.png";
+
 
 				const imgNode = new Image();
+				imgNode.setAttribute('crossorigin', 'anonymous');
+				const frame = new Image();
+
 
 				imgNode.onload = function () {
 					var canvas = document.getElementById("myCanvas");
 					var ctx = canvas.getContext("2d");
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
 					ctx.drawImage(imgNode, 0, 0, 400, 400);
+
+
+					frame.onload = function () {
+						var canvas = document.getElementById("myCanvas");
+						var ctx = canvas.getContext("2d");
+						ctx.drawImage(frame, -2, 0, 402, 400);
+
+					}
+
+					frame.src = frameUri;
 				}
 
 				imgNode.src = uri;
+
+
+
 
 			};
 		</script>

@@ -54,8 +54,9 @@ function renderNavBar(navbarId, exampleUri) {
 	menuButton.href = "#";
 	menuButton.classList.add("button-collapse", "show-on-large");
 	menuButton.setAttribute("data-activates", "slide-out");
-	const menuButtonIcon = document.createElement("img");
-	menuButtonIcon.src = "menu_icon.png";
+	const menuButtonIcon = document.createElement("i");
+	menuButtonIcon.classList.add("material-icons", "small");
+	menuButtonIcon.innerHTML = "menu";
 	menuButton.appendChild(menuButtonIcon);
 	navbar.appendChild(menuButton);
 
@@ -63,9 +64,10 @@ function renderNavBar(navbarId, exampleUri) {
 	const githubLink = document.createElement("a");
 	githubLink.classList.add("waves-effect", "waves-light", "side-by-side");
 	githubLink.id = "github-link";
-	githubLink.href = "https://github.com/jcheong0428/maskon";
+	githubLink.href = "https://github.com/CodeChefVIT/Photify-DEVSOC";
+	githubLink.target = "_blank";
 	const h5 = document.createElement("h5");
-	h5.innerHTML = "#maskon";
+	h5.innerHTML = "Photify!";
 	githubLink.appendChild(h5);
 	const githubLinkIcon = document.createElement("img");
 	githubLinkIcon.src = "mask_icon.png";
@@ -76,7 +78,7 @@ function renderNavBar(navbarId, exampleUri) {
 	examples.forEach((ex) => {
 		const li = document.createElement("li");
 		if (ex.uri === exampleUri) {
-			li.style.background = "#b0b0b0";
+			li.style.background = "#080020";
 		}
 		const a = document.createElement("a");
 		a.classList.add("waves-effect", "waves-light", "pad-sides-sm");
