@@ -44,8 +44,8 @@
 		</canvas>
 
 
-		<input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your DEVSOC badge!" onclick="downloadBadge();"
-			style="margin-bottom: 30px;" />
+		<input type="button" id="btnSave" class="waves-effect waves-light btn badge-btn" value="Save your DEVSOC badge!" onclick="downloadBadge();"
+			style="margin-bottom: 30px;" style="max-width: 400px;" />
 		<script>
 			$(document).ready(function () {
 				renderNavBar('#navbar', 'badge')
@@ -64,9 +64,11 @@
 			}
 
 			window.onload = function () {
-				const uri = "https://user-images.githubusercontent.com/24913006/116006242-f0463380-a627-11eb-9e46-6b7f77db9945.png";
+				const uri = "/images/frame.png";
 
 				const frame = new Image();
+				// frame.setAttribute('crossorigin', 'anonymous');
+
 
 
 				frame.onload = function () {
@@ -82,11 +84,11 @@
 				const imgPrev = document.getElementById("preview-img");
 				const uri = URL.createObjectURL(obj.target.files[0]);
 
-				const frameUri = "https://user-images.githubusercontent.com/24913006/116006242-f0463380-a627-11eb-9e46-6b7f77db9945.png";
+				const frameUri = "/images/frame.png";
 
 
 				const imgNode = new Image();
-				imgNode.setAttribute('crossorigin', 'anonymous');
+				// imgNode.setAttribute('crossorigin', 'anonymous');
 				const frame = new Image();
 
 

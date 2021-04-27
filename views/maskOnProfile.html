@@ -89,71 +89,7 @@
       <p>
         <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo" onclick="downloadmaskpic();" />
 
-      <div class="row side-by-side" style="visibility: hidden;">
-        <!-- face_detector_selection_control -->
-        <div id="face_detector_selection_control" class="row input-field" style="margin-right: 20px;">
-          <select id="selectFaceDetector">
-            <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
-            <option value="tiny_face_detector">Tiny Face Detector</option>
-          </select>
-          <label>Select Face Detector</label>
-        </div>
-        <!-- face_detector_selection_control -->
-
-        <!-- check boxes -->
-        <div class="row" style="width: 220px;">
-          <input type="checkbox" id="hideBoundingBoxesCheckbox" onchange="onChangeHideBoundingBoxes(event)" />
-          <label for="hideBoundingBoxesCheckbox">Hide Bounding Boxes</label>
-        </div>
-        <!-- check boxes -->
-      </div>
-
-
-      <!-- ssd_mobilenetv1_controls -->
-      <span id="ssd_mobilenetv1_controls" style="visibility: hidden;">
-        <div class="row side-by-side">
-          <div class="row">
-            <label for="minConfidence">Min Confidence:</label>
-            <input disabled value="0.5" id="minConfidence" type="text" class="bold">
-          </div>
-          <button class="waves-effect waves-light btn" onclick="onDecreaseMinConfidence(); clearmask();">
-            <i class="material-icons left">-</i>
-          </button>
-          <button class="waves-effect waves-light btn" onclick="onIncreaseMinConfidence(); clearmask();">
-            <i class="material-icons left">+</i>
-          </button>
-        </div>
-      </span>
-      <!-- ssd_mobilenetv1_controls -->
-
-      <!-- tiny_face_detector_controls -->
-      <span id="tiny_face_detector_controls">
-        <div class="row side-by-side">
-          <div class="row input-field" style="margin-right: 20px;">
-            <select id="inputSize">
-              <option value="" disabled selected>Input Size:</option>
-              <option value="160">160 x 160</option>
-              <option value="224">224 x 224</option>
-              <option value="320">320 x 320</option>
-              <option value="416">416 x 416</option>
-              <option value="512">512 x 512</option>
-              <option value="608">608 x 608</option>
-            </select>
-            <label>Input Size</label>
-          </div>
-          <div class="row">
-            <label for="scoreThreshold">Score Threshold:</label>
-            <input disabled value="0.5" id="scoreThreshold" type="text" class="bold">
-          </div>
-          <button class="waves-effect waves-light btn" onclick="onDecreaseScoreThreshold()">
-            <i class="material-icons left">-</i>
-          </button>
-          <button class="waves-effect waves-light btn" onclick="onIncreaseScoreThreshold()">
-            <i class="material-icons left">+</i>
-          </button>
-        </div>
-      </span>
-      <!-- tiny_face_detector_controls -->
+      </p>
 
       <div id="img-out"></div>
       <div class="left-content">

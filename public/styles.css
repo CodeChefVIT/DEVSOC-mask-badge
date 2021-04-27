@@ -144,3 +144,8 @@ button {
   color: black !important;
   font-family: "Montserrat", sans-serif !important;
 }
+
+.btn.badge-btn {
+  max-width: 300px;
+  margin-right: 10px;
+}
