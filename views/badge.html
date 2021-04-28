@@ -2,50 +2,95 @@
 <html>
 
 <head>
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113777015-4"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-X9WD1PVF65"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
-
-		gtag('config', 'UA-113777015-4');
+		gtag('config', 'G-X9WD1PVF65');
 	</script>
 
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Meta Tags -->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description"
+		content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+	<meta name="keywords"
+		content="photify, maskon, badge, hackathon, vit, DEVSOC, codechef-vit, developers' sprint of code, tech, event, DEVSOC 21, hack, vellore-institute-of-technology, consilio, techchronicle, codex, design, code, india\'s biggest hack, best hack, huge cash prize, money, prizes" />
+	<meta name="author" content="Jin Hyun Cheong, Sarthak Bharadwaj, Akshat Gupta, Muskan Rastogi" />
+	<meta name="copyright" content="CodeChef-VIT" />
+	<meta name="language" content="en" />
+	<meta name="url" content="https://photify.codechefvit.com/badge" />
+	<meta name="category" content="Entertainment" />
+	<meta name="coverage" content="Worldwide" />
+	<meta name="rating" content="General" />
+	<meta name="og:email" content="events@codechefvit.com" />
+	<meta name="og:phone_number" content="+917014531554" />
+	<meta name="og:country-name" content="India" />
+	<meta name="og:region" content="Vellore" />
+	<meta name="og:site_name" content="Get a Badge | Photify" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Get a Badge | Photify" />
+	<meta property="og:description"
+		content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+	<meta property="og:url" content="https://photify.codechefvit.com/badge" />
+	<meta property="og:site_name" content="Get a Badge | Photify" />
+	<meta name="twitter:card" content="website" />
+	<meta name="twitter:site" content="Get a Badge | Photify" />
+	<meta name="twitter:title" content="Get a Badge | Photify" />
+	<meta name="twitter:description"
+		content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+	<meta name="twitter:creator" content="@codechefvit" />
+	<meta itemprop="name" content="Get a Badge | Photify" />
+	<meta itemprop="description"
+		content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+	<link rel="canonical" href="https://photify.codechefvit.com/badge" />
+	<link href="images/favicon.png" rel="icon" />
+	<link href="images/apple-touch-icon.png" rel="apple-touch-icon" />
+
+	<!-- Material Icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+	<!-- Linking styles -->
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+	<!-- Scripts -->
 	<script src="js/face-api.js"></script>
 	<script src="js/commons.js"></script>
 	<script src="js/FileSaver.js"></script>
 	<script src="js/dom-to-image.min.js"></script>
 	<script src="js/faceDetectionControls.js"></script>
 	<script src="js/imageSelectionControls.js"></script>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+	<!-- Title -->
+	<title>Get a Badge | Photify</title>
+
 </head>
 
 <body>
+
+	<!-- Navbar -->
 	<div id="navbar"></div>
 	<div class="left-content page-container">
-
-		<p>Image to use:</p>
-
+		<!-- Upload Image -->
+		<p>Upload your image:</p>
 		<input type="file" accept="image/*" id="img-input" />
-
-		<p>Canvas:</p>
-
+		<!-- Badge -->
+		<p>Badge:</p>
 		<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3; border-radius: 16px">
 			Your browser does not support the HTML5 canvas tag.
 		</canvas>
+		<!-- Download Badge -->
+		<input type="button" id="btnSave" class="waves-effect waves-light btn badge-btn" value="Download My Badge"
+			onclick="downloadBadge();" style="margin-bottom: 30px;" style="max-width: 400px;" />
 
-
-		<input type="button" id="btnSave" class="waves-effect waves-light btn badge-btn" value="Save your DEVSOC badge!" onclick="downloadBadge();"
-			style="margin-bottom: 30px;" style="max-width: 400px;" />
+		<!-- Functionality -->
 		<script>
 			$(document).ready(function () {
 				renderNavBar('#navbar', 'badge')
@@ -53,9 +98,8 @@
 				initFaceDetectionControls()
 				run()
 			})
-
+			// Download Badge
 			function downloadBadge() {
-
 				var link = document.createElement('a');
 				link.download = 'devsoc-badge.png';
 				link.href = document.getElementById('myCanvas').toDataURL("image/png");
@@ -65,59 +109,38 @@
 
 			window.onload = function () {
 				const uri = "/images/frame.png";
-
+				// Add Frame
 				const frame = new Image();
-				// frame.setAttribute('crossorigin', 'anonymous');
-
-
-
 				frame.onload = function () {
 					var canvas = document.getElementById("myCanvas");
 					var ctx = canvas.getContext("2d");
 					ctx.drawImage(frame, -2, 0, 402, 400);
 				}
-
 				frame.src = uri;
 			}
 
+			// Add image to frame
 			document.getElementById("img-input").onchange = function (obj) {
 				const imgPrev = document.getElementById("preview-img");
 				const uri = URL.createObjectURL(obj.target.files[0]);
-
 				const frameUri = "/images/frame.png";
-
-
 				const imgNode = new Image();
-				// imgNode.setAttribute('crossorigin', 'anonymous');
 				const frame = new Image();
-
-
 				imgNode.onload = function () {
 					var canvas = document.getElementById("myCanvas");
 					var ctx = canvas.getContext("2d");
 					ctx.clearRect(0, 0, canvas.width, canvas.height);
 					ctx.drawImage(imgNode, 0, 0, 400, 400);
-
-
 					frame.onload = function () {
 						var canvas = document.getElementById("myCanvas");
 						var ctx = canvas.getContext("2d");
 						ctx.drawImage(frame, -2, 0, 402, 400);
-
 					}
-
 					frame.src = frameUri;
 				}
-
 				imgNode.src = uri;
-
-
-
-
 			};
 		</script>
-
-
 
 </body>
 

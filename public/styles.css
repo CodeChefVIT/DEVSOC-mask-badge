@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
 body {
   background-color: #080020;
   color: white;
@@ -9,7 +10,8 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 50px;
   padding-left: calc(280px + 5%);
   display: inline-flex !important;
 }
@@ -81,7 +83,8 @@ body {
   margin-bottom: 10px;
 }
 
-#overlay, .overlay {
+#overlay,
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -116,7 +119,7 @@ li:not(:last-child) {
 }
 
 h3 {
-  background: linear-gradient( 91.52deg, #3051ff .45%, #25d8ff 107.04%);
+  background: linear-gradient(91.52deg, #3051ff .45%, #25d8ff 107.04%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -132,11 +135,11 @@ h3 {
 }
 
 button {
-  background: linear-gradient( 91.89deg, #6f57ff -5.11%, #25d8ff 152.73%) !important;
+  background: linear-gradient(91.89deg, #6f57ff -5.11%, #25d8ff 152.73%) !important;
 }
 
 .btn {
-  background: linear-gradient( 91.89deg, #6f57ff -5.11%, #25d8ff 152.73%) !important;
+  background: linear-gradient(91.89deg, #6f57ff -5.11%, #25d8ff 152.73%) !important;
 }
 
 ::file-selector-button {
@@ -148,4 +151,8 @@ button {
 .btn.badge-btn {
   max-width: 300px;
   margin-right: 10px;
+}
+
+input#file-upload-button {
+  color: blue !important;
 }
