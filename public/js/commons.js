@@ -26,16 +26,12 @@ function renderNavBar(navbarId, exampleUri) {
 	const examples = [
 		{
 			uri: "mask_on_profile",
-			name: "#MaskOn your profile",
+			name: "Put a #MaskOn with Photify",
 		},
 		{
 			uri: "badge",
-			name: "Get DEVSOC badge!",
+			name: "Get the official DEVSOC Badge",
 		},
-		// {
-		//   uri: 'webcam_face_landmark_detection',
-		//   name: '#MaskOn your webcam'
-		// },
 	];
 
 	const navbar = $(navbarId).get(0);
@@ -61,18 +57,15 @@ function renderNavBar(navbarId, exampleUri) {
 	navbar.appendChild(menuButton);
 
 	const li = document.createElement("li");
-	const githubLink = document.createElement("a");
-	githubLink.classList.add("waves-effect", "waves-light", "side-by-side");
-	githubLink.id = "github-link";
-	githubLink.href = "https://github.com/CodeChefVIT/Photify-DEVSOC";
-	githubLink.target = "_blank";
+	const websiteLink = document.createElement("a");
+	websiteLink.classList.add("waves-effect", "waves-light", "side-by-side");
+	websiteLink.id = "github-link";
+	websiteLink.href = "https://photify.codechefvit.com";
+	websiteLink.target = "_blank";
 	const h5 = document.createElement("h5");
 	h5.innerHTML = "Photify!";
-	githubLink.appendChild(h5);
-	const githubLinkIcon = document.createElement("img");
-	githubLinkIcon.src = "mask_icon.png";
-	githubLink.appendChild(githubLinkIcon);
-	li.appendChild(githubLink);
+	websiteLink.appendChild(h5);
+	li.appendChild(websiteLink);
 	menuContent.appendChild(li);
 
 	examples.forEach((ex) => {

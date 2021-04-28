@@ -2,19 +2,56 @@
 <html>
 
 <head>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113777015-4"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X9WD1PVF65"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'UA-113777015-4');
+    gtag('config', 'G-X9WD1PVF65');
   </script>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta Tags -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+  <meta name="keywords"
+    content="photify, maskon, badge, hackathon, vit, DEVSOC, codechef-vit, developers' sprint of code, tech, event, DEVSOC 21, hack, vellore-institute-of-technology, consilio, techchronicle, codex, design, code, india\'s biggest hack, best hack, huge cash prize, money, prizes" />
+  <meta name="author" content="Jin Hyun Cheong, Sarthak Bharadwaj, Akshat Gupta, Muskan Rastogi" />
+  <meta name="copyright" content="CodeChef-VIT" />
+  <meta name="language" content="en" />
+  <meta name="url" content="https://photify.codechefvit.com/mask_on_profile" />
+  <meta name="category" content="Entertainment" />
+  <meta name="coverage" content="Worldwide" />
+  <meta name="rating" content="General" />
+  <meta name="og:email" content="events@codechefvit.com" />
+  <meta name="og:phone_number" content="+917014531554" />
+  <meta name="og:country-name" content="India" />
+  <meta name="og:region" content="Vellore" />
+  <meta name="og:site_name" content="Put a #MaskOn | Photify" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Put a #MaskOn | Photify" />
+  <meta property="og:description"
+    content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+  <meta property="og:url" content="https://photify.codechefvit.com/mask_on_profile" />
+  <meta property="og:site_name" content="Put a #MaskOn | Photify" />
+  <meta name="twitter:card" content="website" />
+  <meta name="twitter:site" content="Put a #MaskOn | Photify" />
+  <meta name="twitter:title" content="Put a #MaskOn | Photify" />
+  <meta name="twitter:description"
+    content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+  <meta name="twitter:creator" content="@codechefvit" />
+  <meta itemprop="name" content="Put a #MaskOn | Photify" />
+  <meta itemprop="description"
+    content="Photify is a project which helps the user make DEVSOC themed masks as well as badges for the social media challenge." />
+  <link rel="canonical" href="https://photify.codechefvit.com/mask_on_profile" />
+  <link href="images/favicon.png" rel="icon" />
+  <link href="images/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Scripts -->
   <script src="js/face-api.js"></script>
   <script src="js/commons.js"></script>
   <script src="js/FileSaver.js"></script>
@@ -22,46 +59,40 @@
   <script src="js/faceDetectionControls.js"></script>
   <script src="js/imageSelectionControls.js"></script>
 
+  <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!-- Linking styles -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <!-- Title -->
+  <title>Put a #MaskOn | Photify</title>
+
 </head>
 
 <body>
+  <!-- Navbar -->
   <div id="navbar"></div>
   <div class="left-content page-container">
-
+    <!-- Loader -->
     <div class="progress" id="loader">
       <div class="indeterminate"></div>
     </div>
     <div style="position: relative" class="margin">
+      <!-- Mask display -->
       <div id="widget" style="width: 600px; height: auto;">
         <div id="maskdiv" style="width: 600px; margin: auto;"></div>
         <img id="inputImg" src="" style="width: 600px; height: auto;" />
       </div>
-      <!-- <canvas id="overlay" /> This used to be under inputImg-->
-
-      <!-- Mask selection goes here -->
-      <img src="images/wearafuckingmask-social-no-earloops-black-border.png" id="mask"
-        onclick="changemask('images/wearafuckingmask-social-no-earloops-black-border.png');" style="width:10%;cursor: pointer;">
-      <!-- <img src="images/wearafuckingmask-social-no-earloops-no-border.png" id="mask"
-    onclick="changemask('images/wearafuckingmask-social-no-earloops-no-border.png');" style="width:10%;"> -->
-      <!-- <img src="images/wearafuckingmask-social-no-earloops-white-border.png" id="mask"
-    onclick="changemask('images/wearafuckingmask-social-no-earloops-white-border.png');" style="width:10%;"> -->
-      <img src="images/afuckingmask-no-earloops-white.png" id="mask" onclick="changemask('images/afuckingmask-no-earloops-white.png');"
+      <!-- Mask selection -->
+      <img src="images/afuckingmask-no-earloops-black.png" id="mask"
+        onclick="changemask('images/afuckingmask-no-earloops-black.png');;" style="width:10%;cursor: pointer;">
+      <img src="images/skullmask.png" id="mask" onclick="changemask('images/skullmask.png');;"
         style="width:10%;cursor: pointer;">
-      <img src="images/afuckingmask-no-earloops-black.png" id="mask" onclick="changemask('images/afuckingmask-no-earloops-black.png');;"
-        style="width:10%;cursor: pointer;">
-      <img src="images/DIYmc-bandana.png" id="mask" onclick="changemask('images/DIYmc-bandana.png');;" style="width:10%;cursor: pointer;">
-      <img src="images/bearmask.png" id="mask" onclick="changemask('images/bearmask.png');;" style="width:10%;cursor: pointer;">
-      <img src="images/blackmask.png" id="mask" onclick="changemask('images/blackmask.png');;" style="width:10%;cursor: pointer;">
-      <img src="images/skullmask.png" id="mask" onclick="changemask('images/skullmask.png');;" style="width:10%;cursor: pointer;">
-      <img src="images/pinkmask.png" id="mask" onclick="changemask('images/pinkmask.png');;" style="width:10%;cursor: pointer;">
-      <img src="images/pinkmask_txt.png" id="mask" onclick="changemask('images/pinkmask_txt.png');;" style="width:10%;cursor: pointer;">
-      <!-- Mask selection goes here -->
+      <!-- Mask controls -->
       <div class="row">
         <button class="waves-effect waves-light btn" onclick="zoomin_mask();">Zoom In</button>
         <button class="waves-effect waves-light btn" onclick="zoomout_mask();">Zoom Out</button>
@@ -71,38 +102,24 @@
         <button class="waves-effect waves-light btn" onclick="movedown_mask();">&darr;</button>
       </div>
       <div class="left-content">
-        Paste a link to your photo or upload your image to put a #maskon.
+        Paste a link to your photo or upload your image to put a #MaskOn.
         Choose from different masks.
         <p>
-          <!-- image_selection_control -->
-        <div class="row side-by-side" style="margin-left:0;">
-          <label for="imgUrlInput">Get image from URL:</label>
-          <input id="imgUrlInput" type="text" class="bold">
-          <button class="waves-effect waves-light btn" onclick="loadImageFromUrl(); clearmask();">Ok</button>
-          <div id="selectList" style='visibility: hidden;'></div>
-        </div>
-        <p>
-          <input id="queryImgUploadInput" type="file" class="waves-effect btn bold" onchange="loadImageFromUpload(); clearmask();"
-            accept=".jpg, .jpeg, .png">
-          <!-- image_selection_control -->
+          <div class="row side-by-side" style="margin-left:0;">
+            <label for="imgUrlInput">Get image from URL:</label>
+            <input id="imgUrlInput" type="text" class="bold">
+            <button class="waves-effect waves-light btn" onclick="loadImageFromUrl(); clearmask();">Ok</button>
+            <div id="selectList" style='visibility: hidden;'></div>
+          </div>
+          <p>
+            <input id="queryImgUploadInput" type="file" class="waves-effect btn bold"
+              onchange="loadImageFromUpload(); clearmask();" accept=".jpg, .jpeg, .png">
       </div>
       <p>
-        <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo" onclick="downloadmaskpic();" />
-
+        <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo"
+          onclick="downloadmaskpic();" />
       </p>
 
-      <div id="img-out"></div>
-      <div class="left-content">
-        <h3>References and other resources</h3>
-        <ul style="list-style-type:disc;">
-          <li><a href="http://github.com/jcheong0428/maskon/">MaskOnMe Github (contributions welcome!): http://github.com/jcheong0428/maskon/</a></li>
-          <li><a href="https://wearafuckingmask.com/">#WearAF—ingMask: https://wearafuckingmask.com/</a></li>
-          <li><a href="https://github.com/justadudewhohacks/face-api.js">face-api.js: https://github.com/justadudewhohacks/face-api.js/</a></li>
-          <li><a href="https://github.com/jlengstorf/spooky-masks-facial-recognition">spooky masks:
-              https://github.com/jlengstorf/spooky-masks-facial-recognition</a></li>
-          <li><a href="https://diymaskchallenge.org">#DIYmaskchallenge: https://diymaskchallenge.org/</a></li>
-        </ul>
-      </div>
 </body>
 
 <script>
@@ -122,17 +139,11 @@
     const scale = inputImgEl.width / inputImgEl.naturalWidth
     const options = getFaceDetectorOptions()
 
-    // Attempt to add handleImage
+    // Add handleImage
     const handleImage = (oldImage, newImage) => async () => {
       const results = await faceapi.detectAllFaces(newImage, options).withFaceLandmarks()
-      // const detection = await faceapi
-      //   .detectSingleFace(inputImgEl, new faceapi.TinyFaceDetectorOptions())
-      //   .withFaceLandmarks(true)
-      // console.log(results)
       for (let i in results) {
         const overlayValues = getOverlayValues(results[i])
-        // console.log(overlayValues)
-        // load mask
         const maskoverlay = document.createElement("img")
         maskoverlay.src = document.getElementById("mask").src
         maskoverlay.id = "maskon"
@@ -144,9 +155,6 @@
             top: ${overlayValues.topOffset * scale}px;
             transform: rotate(${overlayValues.angle}deg);
           `
-        // if (document.getElementById("maskon")) {
-        //   document.getElementById("maskon").remove()
-        // }
         var item = document.getElementById("maskdiv");
         item.appendChild(maskoverlay)
       }
@@ -156,28 +164,19 @@
     image.crossOrigin = "Anonymous";
     image.addEventListener("load", handleImage(inputImgEl, image));
     image.src = inputImgEl.src;
-
-    // const canvas = $('#widget').get(0)
-    // faceapi.matchDimensions(canvas, inputImgEl)
-    // const resizedResults = faceapi.resizeResults(results, inputImgEl)
-    //
-    // if (withBoxes) {
-    //   faceapi.draw.drawDetections(canvas, resizedResults)
-    // }
-    // faceapi.draw.drawFaceLandmarks(canvas, resizedResults)
   }
 
   async function run() {
-    // load face detection and face landmark models
+    // Load face detection and face landmark models
     await changeFaceDetector(SSD_MOBILENETV1)
     await faceapi.loadFaceLandmarkModel('/')
     await faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
       await faceapi.nets.faceLandmark68TinyNet.loadFromUri("/models"),
-
-      // start processing image
+      // Start processing image
       updateResults()
   }
 
+  // Render navbar
   $(document).ready(function () {
     renderNavBar('#navbar', 'mask_on_profile')
     initImageSelectionControls()
@@ -187,33 +186,28 @@
 </script>
 
 <script>
+  // Get face overlay values
   const getOverlayValues = result => {
     landmarks = result.landmarks
     boundingbox = result.alignedRect._box
-
     const nose = landmarks.getNose()
     const jawline = landmarks.getJawOutline()
-
     const jawLeft = jawline[0]
     const jawRight = jawline.splice(-1)[0]
     const adjacent = jawRight.x - jawLeft.x
     const opposite = jawRight.y - jawLeft.y
-    // const jawLength = Math.sqrt(Math.pow(adjacent, 2) + Math.pow(opposite, 2))
     const jawLength = boundingbox._width
-
-    // Both of these work. The chat believes atan2 is better.
-    // I don't know why. (It doesn’t break if we divide by zero.)
-    // const angle = Math.round(Math.tan(opposite / adjacent) * 100)
     const angle = Math.atan2(opposite, adjacent) * (180 / Math.PI)
     const width = jawLength
-
     return {
       width,
       angle,
-      leftOffset: nose[6].x - width / 2,//jawLeft.x - jawLength*.09,
+      leftOffset: nose[6].x - width / 2,
       topOffset: nose[0].y - width * .13,
     }
   }
+
+  // Remove all masks
   function clearmask() {
     const myNode = document.getElementById("maskdiv");
     while (myNode.lastElementChild) {
@@ -221,15 +215,16 @@
     }
   };
 
+  // Change mask
   function changemask(new_img_src) {
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       tableChild.src = new_img_src;
     };
   };
 
+  // Sleep
   function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;
@@ -238,6 +233,7 @@
     } while (currentDate - date < milliseconds);
   }
 
+  // Download mask pic
   function downloadmaskpic() {
     domtoimage.toJpeg(document.getElementById('widget'), { quality: 1.00 })
       .then(function (dataUrl) {
@@ -248,29 +244,29 @@
       });
   };
 
+  // Zoom-in mask
   function zoomin_mask() {
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       tableChild.width = tableChild.width * 1.05;
     };
   }
 
+  // Zoom-out mask
   function zoomout_mask() {
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       tableChild.width = tableChild.width * 0.95;
     };
   }
 
+  // Move masks
   function moveleft_mask() {
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       var left = parseFloat(tableChild.style.left) - 2;
       tableChild.style.left = `${left}px`;
     };
@@ -280,7 +276,6 @@
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       var left = parseFloat(tableChild.style.left) + 2;
       tableChild.style.left = `${left}px`;
     };
@@ -290,7 +285,6 @@
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       var top = parseFloat(tableChild.style.top) - 2;
       tableChild.style.top = `${top}px`;
     };
@@ -300,7 +294,6 @@
     const myNode = document.getElementById("maskdiv").children;
     for (var i = 0; i < myNode.length; i++) {
       var tableChild = myNode[i];
-      // Do stuff
       var top = parseFloat(tableChild.style.top) + 2;
       tableChild.style.top = `${top}px`;
     };

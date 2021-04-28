@@ -21,9 +21,6 @@ app.get("/mask_on_profile", (req, res) =>
 app.get("/badge", (req, res) =>
 	res.sendFile(path.join(viewsDir, "badge.html"))
 );
-app.get("/webcam_face_landmark_detection", (req, res) =>
-	res.sendFile(path.join(viewsDir, "webcamFaceLandmarkDetection.html"))
-);
 
 app.post("/fetch_external_image", async (req, res) => {
 	const { imageUrl } = req.body;
