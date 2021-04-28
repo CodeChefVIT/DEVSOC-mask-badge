@@ -88,10 +88,12 @@
         <img id="inputImg" src="" style="width: 600px; height: auto;" />
       </div>
       <!-- Mask selection -->
-      <img src="images/afuckingmask-no-earloops-black.png" id="mask"
-        onclick="changemask('images/afuckingmask-no-earloops-black.png');;" style="width:10%;cursor: pointer;">
-      <img src="images/skullmask.png" id="mask" onclick="changemask('images/skullmask.png');;"
+      <img src="images/afuckingmask-no-earloops-black.png" id="mask" onclick="changemask('images/afuckingmask-no-earloops-black.png');;"
         style="width:10%;cursor: pointer;">
+      <img src="images/skullmask.png" id="mask" onclick="changemask('images/skullmask.png');;" style="width:10%;cursor: pointer;">
+      <img src="images/devsoc.png" id="mask" onclick="changemask('images/devsoc.png');;" style="width:10%;cursor: pointer;">
+      <img src="images/devsoc1.png" id="mask" onclick="changemask('images/devsoc1.png');;" style="width:10%;cursor: pointer;">
+      <img src="images/devsoc2.png" id="mask" onclick="changemask('images/devsoc2.png');;" style="width:10%;cursor: pointer;">
       <!-- Mask controls -->
       <div class="row">
         <button class="waves-effect waves-light btn" onclick="zoomin_mask();">Zoom In</button>
@@ -105,19 +107,18 @@
         Paste a link to your photo or upload your image to put a #MaskOn.
         Choose from different masks.
         <p>
-          <div class="row side-by-side" style="margin-left:0;">
-            <label for="imgUrlInput">Get image from URL:</label>
-            <input id="imgUrlInput" type="text" class="bold">
-            <button class="waves-effect waves-light btn" onclick="loadImageFromUrl(); clearmask();">Ok</button>
-            <div id="selectList" style='visibility: hidden;'></div>
-          </div>
-          <p>
-            <input id="queryImgUploadInput" type="file" class="waves-effect btn bold"
-              onchange="loadImageFromUpload(); clearmask();" accept=".jpg, .jpeg, .png">
+        <div class="row side-by-side" style="margin-left:0;">
+          <label for="imgUrlInput">Get image from URL:</label>
+          <input id="imgUrlInput" type="text" class="bold">
+          <button class="waves-effect waves-light btn" onclick="loadImageFromUrl(); clearmask();">Ok</button>
+          <div id="selectList" style='visibility: hidden;'></div>
+        </div>
+        <p>
+          <input id="queryImgUploadInput" type="file" class="waves-effect btn bold" onchange="loadImageFromUpload(); clearmask();"
+            accept=".jpg, .jpeg, .png">
       </div>
       <p>
-        <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo"
-          onclick="downloadmaskpic();" />
+        <input type="button" id="btnSave" class="waves-effect waves-light btn" value="Save your #maskon photo" onclick="downloadmaskpic();" />
       </p>
 
 </body>
